@@ -1,0 +1,33 @@
+/* Footer styles */
+
+.site-footer {
+  background: white;
+  text-align: center;
+  overflow: hidden;
+
+  .title-info {
+    @extend %font-twenty-eight;
+  }
+}
+.structure.site-footer {
+  padding-bottom: 0;
+}
+.site-description {
+  color: $gray-74;
+  margin: 0;
+}
+.design-credit {
+  background: $gray;
+  color: $gray-74;
+  margin-top: $baseline-height * 2;
+
+  p {
+    margin: 0;
+    font-size: 0.813em;
+    line-height: 1.85;
+    padding: $baseline-height / 2 * 1.231;
+  }
+  a {
+    @extend %link-gray-74;
+  }
+}

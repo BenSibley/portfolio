@@ -1,0 +1,247 @@
+/* Menu Styles */
+
+.menu-container {
+
+  ul {
+    margin: 0;
+    list-style: none;
+
+    a {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+  }
+}
+.menu-primary-items,
+.menu-unset {
+  padding: $baseline-height 0;
+
+  a {
+    @extend %link-gray-44;
+    font-size: 0.8125em;
+    line-height: 1.85;
+    padding-bottom: $baseline-height / 2 * 1.231;
+    display: block;
+    border-bottom: solid 1px $gray-92;
+    margin-bottom: $baseline-height * 1.231;
+  }
+  .sub-menu {
+    margin-left: 24px;
+  }
+  // nested to avoid styling footer menu
+  .current_page_item {
+
+    > a {
+      border-color: $orange;
+    }
+  }
+}
+
+
+/* menu positioning while not toggled */
+.menu-primary {
+  position: absolute;
+  background: white;
+  left: 0;
+  width: 320px;
+  max-width: 320px;
+  height: 100%;
+}
+
+/* 900px */
+@media all and (min-width: 56.25em){
+
+  .menu-primary {
+    position: relative;
+    width: auto;
+    max-width: none;
+    text-align: center;
+  }
+  .menu-primary-items {
+    display: inline-block;
+    padding: 0 $baseline-height / 2;
+    border: solid 1px $gray-92;
+    border-radius: 3px;
+
+    li {
+      position: relative;
+      display: inline-block;
+      margin-right: -4px; // fix inline space issues
+      padding: $baseline-height 0;
+
+      &:last-child {
+
+        a {
+          border: none;
+        }
+      }
+    }
+    a {
+      border: none;
+      margin: 0;
+      padding: 0 $baseline-height;
+      border-right: solid 1px $gray-92;
+    }
+    // nested to avoid styling footer menu
+    > .current_page_item {
+      border: solid 1px $orange;
+      border-radius: 3px;
+      margin-left: -1px; // doesn't work with shorthand & negative margins
+      margin-top: -1px;
+      margin-bottom: -1px;
+
+      > a {
+        border: none;
+      }
+      &:first-child {
+        margin-left: -13px;
+        padding-left: $baseline-height / 2;
+      }
+      &:last-child {
+        margin-right: -12px;
+        padding-right: 7px; // because of default margin-right -4px;
+      }
+    }
+  }
+  .menu-primary {
+
+    .sub-menu {
+      margin: auto;
+    }
+  }
+  // Tier 2 Menu styles
+  .sub-menu {
+    position: absolute;
+    opacity: 0;
+    z-index: 9;
+    top: $baseline-height * 2.8;
+    max-width: 200px;
+    left: -50%;
+    right: -50%;
+    visibility: hidden;
+    padding: $baseline-height / 2 0;
+    background: #ffffff;
+    border-radius: 3px;
+    border: solid 1px $gray-92;
+    transition: all 0.2s ease-in-out;
+
+    li {
+      display: block;
+      padding: 0;
+      margin: $baseline-height / 2 0;
+    }
+    a {
+      border: none;
+    }
+    // triangle pointer
+    &:before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 44%;
+      left: calc(50% - 12px);
+      border-right: solid 12px transparent;;
+      border-left: solid 12px transparent;
+      border-bottom: solid 12px $gray-92;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: -11px;
+      left: 44%;
+      left: calc(50% - 12px);
+      border-right: solid 12px transparent;;
+      border-left: solid 12px transparent;
+      border-bottom: solid 12px white;
+    }
+  }
+  // Tier 2 hover effects
+  .menu-primary {
+
+    a {
+      transition: none; // they were staying visible too long because of visbility transition difference
+
+      &:hover,
+      &:active,
+      &:focus {
+
+        // sub-menu
+        + ul {
+          top: $baseline-height * 2.5;
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+  .sub-menu {
+
+    &:hover {
+      top: $baseline-height * 2.5;
+      opacity: 1;
+      visibility: visible;
+    }
+  // Tier 3 stuff
+    a {
+
+      &:hover,
+      &:active,
+      &:focus {
+
+        + .sub-menu {
+          left: 105%;
+          left: calc(100% + 12px);
+          top: -$baseline-height; // repeated to override tier 2
+        }
+      }
+    }
+    .sub-menu {
+      right: auto;
+      left: 110%;
+      left: calc(100% + 24px);
+      top: -$baseline-height;
+      transition: visibility 0.2s ease-in-out, opacity 0.2s ease-in-out, left 0.2s ease-in-out;
+
+      // triangle pointer
+      &:before {
+        top: $baseline-height;
+        left: -$baseline-height;
+        border-top: solid 12px transparent;;
+        border-bottom: solid 12px transparent;
+        border-right: solid 12px $gray-92;
+      }
+      &:after {
+        top: $baseline-height;
+        left: -23px;
+        border-top: solid 12px transparent;;
+        border-bottom: solid 12px transparent;
+        border-right: solid 12px white;
+      }
+      &:hover {
+        left: 105%;
+        left: calc(100% + 12px);
+        top: -$baseline-height; // repeated to override tier 2
+      }
+    }
+  }
+  // making hover transitions from link to menu easier
+  .menu-item-has-children {
+
+    > a {
+
+      &:hover,
+      &:active,
+      &:focus {
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 4px;
+          width: 100%;
+          left: 0;
+          height: $baseline-height;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+/* search page & form */
+
+.search-form {
+  margin: $baseline-height 0 $baseline-height * 2;
+
+  input {
+    margin: 0;
+  }
+  input[type="search"]{
+    margin-bottom: $baseline-height / 2;
+  }
+}
+.search-bottom {
+  margin-top: $baseline-height * 2;
+}

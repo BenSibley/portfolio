@@ -1,0 +1,11 @@
+/* loop pagination styles */
+
+.loop-pagination {
+  text-align: center;
+  margin: $baseline-height 0;
+
+  a,
+  span {
+    margin: 0 $baseline-height / 4;
+  }
+}

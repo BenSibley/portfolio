@@ -1,0 +1,129 @@
+/* post navigation styles */
+
+.further-reading {
+
+  span {
+    display: block;
+  }
+  svg,
+  .home-container {
+    display: none;
+  }
+  .home-container {
+    @extend %component;
+  }
+}
+
+/* 600px */
+@media all and (min-width: 37.5em) {
+
+  .entry-content {
+    position: relative;
+  }
+  .further-reading {
+    position: fixed;
+    top: 45%;
+    left: 0;
+    width: 100%;
+
+    // "Previous Post", "Next Post"
+    .navigation-title {
+      display: none;
+    }
+    svg,
+    .home-container {
+      display: block;
+      position: relative;
+      border: solid 1px $gray-92;
+    }
+    a {
+      position: absolute;
+
+      &:hover,
+      &:active,
+      &:focus {
+
+        svg {
+          border-radius: 0 0 0 0;
+        }
+        .arrow {
+          fill: $orange;
+        }
+      }
+    }
+    .post-title {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      background: white;
+      display: inline-block;
+      white-space: nowrap;
+      border: solid 1px $gray-92;
+      opacity: 1;
+      transition: transform 0.2s ease, opacity 0.1s 0.3s ease;
+    }
+  }
+  .left-arrow {
+    border-radius: 0 3px 3px 0;
+  }
+  .right-arrow {
+    border-radius: 3px 0 0 3px;
+  }
+  .previous-post-title {
+    padding: $baseline-height * 2 $baseline-height * 2 0 $baseline-height;
+    border-radius: 0 3px 3px 0;
+    right: 0;
+  }
+  .previous-post-link {
+
+    &:hover,
+    &:active,
+    &:focus {
+
+      svg,
+      .home-container {
+        border-right: none;
+      }
+      .post-title {
+        transform: translateX(100%);
+        border-left: none;
+      }
+    }
+  }
+  .next-post-title {
+    padding: $baseline-height * 2 $baseline-height 0 $baseline-height * 2;
+    border-radius: 3px 0 0 3px;
+    left: 0;
+  }
+  .next-post-link {
+    right: 0;
+
+    &:hover,
+    &:active,
+    &:focus {
+
+      svg,
+      .home-container {
+        // removing the border was causing a small movement
+        border-left-color: white;
+      }
+      .post-title {
+        transform: translateX(-100%);
+        border-right: none;
+      }
+    }
+  }
+  .home-container {
+    width: 60px;
+    height: 120px;
+    z-index: 9;
+
+    .home-icon {
+      position: absolute;
+      height: 100%;
+      width: 60%;
+      left: 20%;
+      border: none;
+    }
+  }
+}

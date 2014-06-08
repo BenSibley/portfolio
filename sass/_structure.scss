@@ -1,0 +1,49 @@
+/* structure styles */
+
+.structure {
+  backface-visibility: hidden;
+  padding: $baseline-height $column * 2;
+  transition: transform 0.3s ease; /* for menu toggle */
+}
+.overflow-container {
+  overflow: hidden;
+}
+.main {
+  background: $off-white;
+}
+// elements that need to be expand outside the containers
+.full-width {
+  position: relative;
+  left: -8%;
+  width: 116%;
+}
+
+/* 600px */
+@media all and (min-width: 37.5em){
+
+  .structure {
+    padding: $baseline-height $column * 4;
+    padding-top: $baseline-height * 1.5;
+  }
+  .menu-primary.structure {
+    padding: $baseline-height $column * 2;
+  }
+  .full-width {
+    left: -17%;
+    width: 134%;
+  }
+}
+
+/* 900px */
+@media all and (min-width: 56.25em){
+
+  .structure {
+    padding: $baseline-height * 2 $column * 4;
+  }
+  .main.structure {
+    padding: $baseline-height * 2 $column * 7;
+  }
+  .menu-primary.structure {
+    padding: 0;
+  }
+}

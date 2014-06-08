@@ -1,0 +1,275 @@
+/*===== Basic Styles =====*/
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+body {
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $open-sans;
+  line-height: 1.5;
+  color: $gray;
+  background: $off-white;
+  word-wrap: break-word;
+  -ms-word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+p {
+  margin: $baseline-height 0;
+}
+%link-orange,
+a {
+  color: $orange;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:link {
+    color: $orange;
+  }
+  &:visited,
+  &:hover,
+  &:active {
+    color: $orange-dark;
+  }
+}
+%link-gray-74 {
+  color: $gray-74;
+
+  &:link,
+  &:visited {
+    color: $gray-74;
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    color: $orange;
+  }
+}
+%link-gray-44 {
+  color: $gray;
+
+  &:link,
+  &:visited {
+    color: $gray;
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    color: $orange;
+  }
+}
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+%font-fourty-eight,
+h1 {
+  font-size: 3em; /* 48px / 16px */
+  line-height: 1;
+}
+%font-thirty-seven,
+h2 {
+  font-size: 2.3125em; /* 37px / 16px */
+  line-height: 1.297;
+}
+%font-twenty-eight,
+h3 {
+  font-size: 1.75em; /* 28px / 16px */
+  line-height: 1.714;
+}
+%font-twenty-one,
+h4 {
+  font-size: 1.313em; /* 21px / 16px */
+  line-height: 1.143;
+}
+%font-eighteen,
+h5 {
+  font-size: 1.125em; /* 18px / 16px */
+  line-height: 1.34;
+}
+h6 {
+  font-size: 1em;
+}
+ul,
+ol {
+  font-size: 1em;
+  padding: 0;
+  margin: $baseline-height;
+
+  ul,ol {
+    margin: 0 $baseline-height;
+  }
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul,
+li li {
+  font-size: 1em;
+}
+
+/* Markup styles */
+
+pre {
+  word-wrap: break-word;
+  padding: $baseline-height / 2;
+}
+code {
+  padding: 0 $baseline-height / 4;
+}
+blockquote {
+  @extend %component;
+  padding: 0 $baseline-height * 2;
+  margin: $baseline-height 0;
+  position: relative;
+
+  cite {
+    display: block;
+    text-align: right;
+    margin-top: $baseline-height;
+    color: $gray-74;
+  }
+  &:after {
+    content: '\201C';
+    font-family: $cookie;
+    position: absolute;
+    top: 60px;
+    left: 12px;
+    line-height: 0;
+    color: $orange;
+    font-size: 90px;
+  }
+}
+hr {
+  margin: $baseline-height * 0.46 0;
+}
+
+/* Table styles */
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: $baseline-height 0;
+  background: white;
+}
+td {
+  padding: 0.5em 0.75em;
+  border: solid 1px $gray-74;
+}
+th {
+  padding: 0.5em 0.75em;
+  border: solid 1px $gray-74;
+}
+
+/* Images */
+
+.alignleft {
+  float: left;
+  margin: 0 $baseline-height $baseline-height 0;
+  max-width: calc(100% - 1.5em); // minus margin
+}
+.alignright {
+  float: right;
+  margin: 0 0 $baseline-height $baseline-height;
+  max-width: calc(100% - 1.5em); // minus margin
+}
+.aligncenter,
+.alignnone {
+  text-align: center;
+  margin: $baseline-height auto;
+  max-width: 100%;
+}
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+  max-width: 100%;
+  height: auto;
+  line-height: 0;
+}
+.wp-caption-text {
+
+}
+
+/* Form styles */
+
+input,
+textarea {
+  @extend %component;
+  font-size: 0.813em;
+  line-height: 1.85;
+  font-family: $open-sans;
+  color: $gray;
+  margin: $baseline-height / 2 * 1.231 0;
+  padding: $baseline-height / 2 * 1.231;
+  width: 100%;
+  max-width: $baseline-height * 10 * 1.85;
+  -webkit-appearance: none;
+  transition: all 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $orange;
+  }
+}
+textarea {
+  max-width: $baseline-height * 15 * 1.85;
+}
+input[type="submit"] {
+  outline: none;
+  max-width: $baseline-height * 5 * 1.85;
+  background: $orange;
+  color: white;
+}
+input[type="submit"]:hover {
+  cursor: pointer;
+  background: $orange-dark;
+}
+input[type="search"] {
+  margin-right: $baseline-height;
+  padding-right: $baseline-height / 4; /* so safari 'x' doesn't get cut off */
+}
+::-webkit-input-placeholder {
+  color: $gray-74;
+}
+:-moz-placeholder /* Firefox 18- */ {
+  color: $gray-74;
+}
+::-moz-placeholder /* Firefox 19+ */ {
+  color: $gray-74;
+}
+:-ms-input-placeholder {
+  color: $gray-74;
+}
+
+/* sticky */
+.sticky {
+
+}
+
+/* ie image border fix */
+
+a img {
+  border: none;
+}
+
+.script {
+  font-family: $cookie;
+}
+
+// hiding screen reader text
+.screen-reader-text {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+}

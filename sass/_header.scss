@@ -1,0 +1,134 @@
+/* site header styles */
+
+.skip-content {
+  display: none;
+}
+.site-header {
+  background: white;
+}
+.title-info {
+  display: inline-block;
+}
+.site-title {
+  @extend %font-twenty-one;
+  color: $gray-74;
+
+  a {
+    @extend %link-gray-74;
+  }
+}
+.home-icon {
+  margin-right: 4px;
+}
+.toggle-navigation {
+  margin: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  float: right;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+.toggle-svg {
+
+  rect {
+    fill: $gray-74;
+  }
+}
+
+.social-media-icons {
+  list-style: none;
+  margin: 0;
+
+  li {
+    display: inline-block;
+    margin-right: 8px;
+  }
+  i {
+    margin-right: -2px;
+  }
+}
+.little-button {
+  background: $gray-85;
+  display: inline-block;
+  text-align: center;
+  border-radius: 3px;
+  color: white;
+  height: $baseline-height;
+  width: $baseline-height;
+  transition: all 0.2s ease;
+
+  &:link,
+  &:visited {
+    color: white;
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    background: $orange;
+    color: white;
+  }
+}
+.toggled {
+
+  ~ .structure {
+    transform: translateX(320px)
+  }
+  + div .post-title {
+    visibility: hidden;
+    opacity: 0;
+  }
+  // toggle nav boxes
+  rect {
+    fill: $orange;
+  }
+  // to keep from affecting non-toggle nav
+  .current_page_item {
+
+    > a {
+      color: $orange;
+    }
+  }
+}
+
+/* 900px */
+@media all and (min-width: 56.25em) {
+
+  .site-header {
+    position: relative;
+    z-index: 9;
+
+    &.cramped {
+      padding-top: 0;
+
+      .menu-primary-items {
+        margin-top: $baseline-height * 3;
+        width: 100%;
+      }
+      .title-info {
+        top: $baseline-height;
+      }
+    }
+  }
+  .title-info.title-info-header {
+    position: absolute;
+    z-index: 3;
+    top: 68px;
+  }
+  .toggle-navigation {
+    display: none;
+  }
+  .menu-icons {
+    position: absolute;
+    right: 0;
+    top: 20px;
+  }
+  #menu-social-icons a {
+    transition: all 0.2s ease;
+  }
+}
